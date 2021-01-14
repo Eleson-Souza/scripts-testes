@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var date = new Date();
+            var day = date.getDate();
+            var month = date.getMonth()+1;
+
+            var data = google.visualization.arrayToDataTable([
+                ['Days', 'Eleson', 'Lucas', 'Victor', 'Marco'],
+                [`${day}/${month}`, 10, 5, 20, 30],
+                [`${day-1}/${month}`, 11, 11, 20, 30],
+                [`${day-2}/${month}`, 12, 12, 20, 30],
+                [`${day-3}/${month}`, 14, 15, 20, 30],
+                [`${day-4}/${month}`, 15, 16, 20, 30],
+                [`${day-5}/${month}`, 18, 17, 20, 30],
+                [`${day-6}/${month}`, 19, 50, 20, 30],
+        ])
+
+            var options = {
+                title: 'Company Performance',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+</body>
+
+</html>
